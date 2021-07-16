@@ -11,11 +11,7 @@ class ConvBlock(nn.Module):
         self.conv = nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                             kernel_size=kernel_size, stride=stride, padding=padding)
         self.norm = nn.BatchNorm2d(num_features=out_channels)
-<<<<<<< HEAD
-        self.relu = nn.ReLU6(inplace=True)
-=======
         self.relu = nn.ReLU(inplace=True)
->>>>>>> 161e9aa80ca89581d6c4db97f5707a5c9fa81069
     def forward(self, x):
         x = self.conv(x)
         x = self.norm(x)
@@ -89,11 +85,7 @@ class FFM(nn.Module):
         self.conv_block = ConvBlock(in_channels=in_channels, out_channels=out_channels, stride=stride)
         self.global_pool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         self.conv1 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
-<<<<<<< HEAD
-        self.relu = nn.ReLU6(inplace=True)
-=======
         self.relu = nn.ReLU(inplace=True)
->>>>>>> 161e9aa80ca89581d6c4db97f5707a5c9fa81069
         self.conv2 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
         self.activation = nn.Sigmoid()
     
@@ -123,7 +115,7 @@ class BiSiNet(nn.Module):
                             kernel_size=1, stride=1, padding=0)
         self.conv_sp1 = ConvBlock(in_channels=256, out_channels=num_classes, kernel_size=1, padding=0)
         self.conv_sp2 = ConvBlock(in_channels=768, out_channels=num_classes, kernel_size=1, padding=0)
-        
+
     def forward(self, x):
         sp = self.sp(x)
         cp = self.cp(x)
