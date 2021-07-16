@@ -125,7 +125,3 @@ class BiSiNet(nn.Module):
         return self.conv(self.up2(ffm))
 
 
-
-model = BiSiNet(training=True)
-x = torch.randn(1,3,384,384)
-summary(model, (3, 384, 384))
