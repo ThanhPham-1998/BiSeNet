@@ -11,7 +11,7 @@ class ConvBlock(nn.Module):
         self.conv = nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                             kernel_size=kernel_size, stride=stride, padding=padding)
         self.norm = nn.BatchNorm2d(num_features=out_channels)
-        self.relu = nn.ReLU6(inplace=True)
+        self.relu = nn.ReLU(inplace=True)
     def forward(self, x):
         x = self.conv(x)
         x = self.norm(x)
@@ -85,7 +85,7 @@ class FFM(nn.Module):
         self.conv_block = ConvBlock(in_channels=in_channels, out_channels=out_channels, stride=stride)
         self.global_pool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         self.conv1 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
-        self.relu = nn.ReLU6(inplace=True)
+        self.relu = nn.ReLU(inplace=True)
         self.conv2 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
         self.activation = nn.Sigmoid()
     
