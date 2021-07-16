@@ -11,7 +11,11 @@ class ConvBlock(nn.Module):
         self.conv = nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                             kernel_size=kernel_size, stride=stride, padding=padding)
         self.norm = nn.BatchNorm2d(num_features=out_channels)
+<<<<<<< HEAD
         self.relu = nn.ReLU6(inplace=True)
+=======
+        self.relu = nn.ReLU(inplace=True)
+>>>>>>> 161e9aa80ca89581d6c4db97f5707a5c9fa81069
     def forward(self, x):
         x = self.conv(x)
         x = self.norm(x)
@@ -85,7 +89,11 @@ class FFM(nn.Module):
         self.conv_block = ConvBlock(in_channels=in_channels, out_channels=out_channels, stride=stride)
         self.global_pool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         self.conv1 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
+<<<<<<< HEAD
         self.relu = nn.ReLU6(inplace=True)
+=======
+        self.relu = nn.ReLU(inplace=True)
+>>>>>>> 161e9aa80ca89581d6c4db97f5707a5c9fa81069
         self.conv2 = nn.Conv2d(in_channels=out_channels, out_channels=out_channels, kernel_size=(1, 1))
         self.activation = nn.Sigmoid()
     
@@ -125,7 +133,3 @@ class BiSiNet(nn.Module):
         return self.conv(self.up2(ffm))
 
 
-
-model = BiSiNet(training=True)
-x = torch.randn(1,3,384,384)
-summary(model, (3, 384, 384))

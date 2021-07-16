@@ -7,7 +7,7 @@ class BiSiNetLoss(nn.Module):
         self.loss = nn.CrossEntropyLoss()
         self.training = training
         pass
-    def forward(self, pred, target, feature_1=0, feature_2=0):
+    def forward(self, pred, target, features_1=0, features_2=0):
         if self.training:
             loss_1 = self.loss(pred, target)
             loss_2 = self.loss(feature_1, target)
