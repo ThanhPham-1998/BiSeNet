@@ -123,6 +123,7 @@ class BiSiNet(nn.Module):
                             kernel_size=1, stride=1, padding=0)
         self.conv_sp1 = ConvBlock(in_channels=256, out_channels=num_classes, kernel_size=1, padding=0)
         self.conv_sp2 = ConvBlock(in_channels=768, out_channels=num_classes, kernel_size=1, padding=0)
+        
     def forward(self, x):
         sp = self.sp(x)
         cp = self.cp(x)
