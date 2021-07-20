@@ -102,7 +102,7 @@ class FFM(nn.Module):
         return add
 
 
-class BiSiNet(nn.Module):
+class BiSeNet(nn.Module):
     def __init__(self, num_classes=2, training=False):
         super().__init__()
         self.training = training
@@ -113,8 +113,8 @@ class BiSiNet(nn.Module):
         self.up2 = nn.UpsamplingBilinear2d(scale_factor=8)
         self.conv = ConvBlock(in_channels=num_classes, out_channels=num_classes,
                             kernel_size=1, stride=1, padding=0)
-        self.conv_sp1 = ConvBlock(in_channels=256, out_channels=num_classes, kernel_size=1, padding=0)
-        self.conv_sp2 = ConvBlock(in_channels=768, out_channels=num_classes, kernel_size=1, padding=0)
+        self.conv_sp1 = ConvBlock(in_channels=256, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
+        self.conv_sp2 = ConvBlock(in_channels=768, out_channels=num_classes, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
         sp = self.sp(x)
